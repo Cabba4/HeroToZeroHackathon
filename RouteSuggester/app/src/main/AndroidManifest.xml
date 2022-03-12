@@ -10,13 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRoute">
         <activity
-            android:name=".loginPage"
+            android:name=".registerPerson"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".lessonWindow"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".loginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

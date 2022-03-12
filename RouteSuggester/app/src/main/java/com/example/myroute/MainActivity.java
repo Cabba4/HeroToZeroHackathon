@@ -40,11 +40,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showHome(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-
     public void showLogin(View view) {
         Intent intent = new Intent(this,loginPage.class);
     }
