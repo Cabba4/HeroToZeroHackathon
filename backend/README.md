@@ -49,6 +49,15 @@
 ]
 ```
 
+### PUT https://21wsp4pw.course.tamk.cloud/api/v2/task/:task_id/:pass
+```
+{
+  "user_id": 1, 
+  "value": 0
+}
+```
+
+
 ## Setup
 
 ```

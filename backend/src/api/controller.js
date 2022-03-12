@@ -1,5 +1,11 @@
 var mysql = require('mysql');
 const secret = "super_secret_pass";
+const db_params = {
+    host: "mydb.tamk.fi",
+    user: "cpsvva",
+    password: "6S52I9So",
+    database: "dbcpsvva2"
+};
 
 exports.getUser = (req, res) => {
     // Validate request
@@ -9,12 +15,7 @@ exports.getUser = (req, res) => {
         return;
     }
 
-    var con = mysql.createConnection({
-        host: "mydb.tamk.fi",
-        user: "cpsvva",
-        password: "6S52I9So",
-        database: "dbcpsvva2"
-    });
+    var con = mysql.createConnection(db_params);
 
     con.connect((err) => {
         if (err) {
@@ -36,12 +37,7 @@ exports.createUser = (req, res) => {
         return;
     }
 
-    var con = mysql.createConnection({
-        host: "mydb.tamk.fi",
-        user: "cpsvva",
-        password: "6S52I9So",
-        database: "dbcpsvva2"
-    });
+    var con = mysql.createConnection(db_params);
 
     con.connect((err) => {
         if (err) {
@@ -67,25 +63,49 @@ exports.getTaskList = (req, res) => {
         return;
     }
 
-    var con = mysql.createConnection({
-        host: "mydb.tamk.fi",
-        user: "cpsvva",
-        password: "6S52I9So",
-        database: "dbcpsvva2"
-    });
+    var con = mysql.createConnection(db_params);
 
     con.connect((err) => {
         if (err) {
             res.status(500).send({ message: "Internal error" });
+            return;
         }
         con.query(`SELECT name, description, weight, type, goal, completion.completion, task.id AS 'task_id' FROM task INNER JOIN assignment ON assignment.task_id = task.id INNER JOIN role ON role.role_id = assignment.role_id INNER JOIN user ON user.id = role.user_id INNER JOIN completion ON (completion.user_id = user.id AND completion.task_id = task.id) WHERE user.id = ${req.params.user_id};`, (err, result, fields) => {
             if (err) {
                 res.status(500).send({
                     message: "Internal error"
                 });
-                return
+                return;
             }
             res.send(result);
+        });
+    });
+}
+
+exports.updateTask = (req, res) => {
+    console.log('hi');
+    if ((req.params.pass != secret) || (!req.body)) {
+        res.status(400).send({ message: "Bad request" });
+        return;
+    }
+
+    var con = mysql.createConnection(db_params);
+
+    con.connect((err) => {
+        if (err) {
+            res.status(500).send({ message: "Internal error" });
+            return;
+        }
+        con.query(`UPDATE completion SET completion.completion = ${req.body.value} WHERE user_id = ${req.body.user_id} AND task_id = ${req.params.task_id};`, (err, result, fields) => {
+            if (err) {
+                res.status(500).send({
+                    message: "Internal error"
+                });
+                return;
+            }
+            res.status(200).send({
+                message: "UPDATE successful"
+            });
         });
     });
 }
