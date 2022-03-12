@@ -14,6 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,26 +22,43 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 public class lessonWindow extends AppCompatActivity {
-
     ListView l;
+    listObject taskStore;
     ArrayList<listObject> taskList = new ArrayList<>();
-    private int id;
-    private String name;
-    private String description;
-    private int weight;
-
     private RequestQueue queue;
     String listDatafromBackend = "https://21wsp4pw.course.tamk.cloud/api/v2/tasks/";
     String userId = getIntent().getStringExtra("Id");
     String superPass = "/super_secret_pass";
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_lesson_window);
+        //getList();
+        //showChange();
+        //Toast.makeText(this,listDatafromBackend+userId+superPass,Toast.LENGTH_LONG).show();
+        queue = Volley.newRequestQueue(this);
+    }
+    private int counter =0;
     public void getList(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, listDatafromBackend,
                 response -> {
                     try {
-                        JSONObject tasks = new JSONObject(response);
-
-                        Toast.makeText(this,response,Toast.LENGTH_LONG).show();
+                        JSONArray tasks = new JSONArray(response);
+                        while(tasks.getJSONObject(counter).has("name"))
+                        {
+                            taskStore.setTask_id(tasks.getJSONObject(counter).getInt("task_id"));
+                            taskStore.setName(tasks.getJSONObject(counter).getString("name"));
+                            taskStore.setCompletion(tasks.getJSONObject(counter).getInt("completion"));
+                            taskStore.setDescription(tasks.getJSONObject(counter).getString("description"));
+                            taskStore.setGoal(tasks.getJSONObject(counter).getInt("goal"));
+                            taskStore.setType(tasks.getJSONObject(counter).getString("type"));
+                            taskStore.setWeight(tasks.getJSONObject(counter).getInt("weight"));
+                            taskList.add(taskStore);
+                            counter++;
+                        }
+                        //task_id = tasks.getJSONOb
+                        Toast.makeText(this,taskStore.toString(),Toast.LENGTH_LONG).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -55,43 +73,16 @@ public class lessonWindow extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-   /* private void parseJsonAndUpdateUI(String response) {
-        try {
-            JSONObject list = new JSONObject(response);
-            //id = list.getJSONArray();
-            //name = list.getJSONArray();
-            //description = list.getJSONArray();
-            //weight = list.getJSONArray();
-            //taskList.add(new listObject(id,name,description,weight));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
-*/
-    String tutorials[]
-            = { "Clean Kitchen", "Data Structures",
-            "Languages", "Interview Corner",
-            "GATE", "ISRO CS",
-            "UGC NET CS", "CS Subjects",
-            "Web Technologies" };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_window);
-        getList();
-        queue = Volley.newRequestQueue(this);
-    }
-/*
     public void showChange(View view) {
+       getList();
         l = findViewById(R.id.listView);
         ArrayAdapter<listObject> arr;
-        arr = new ArrayAdapter<listObject>(this,
+        arr
+                = new ArrayAdapter<listObject>(
+                this,
                 R.layout.support_simple_spinner_dropdown_item,
                 taskList);
         l.setAdapter(arr);
+        //getList();
     }
-*/
 }
