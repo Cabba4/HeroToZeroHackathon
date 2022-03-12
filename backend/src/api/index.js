@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get("/user/:email/:pass", controller.getUserPass);
 
-router.post("/user", controller.createUser);
+router.post("/user/:pass", controller.createUser);
+
+router.get("/tasks/:user_id/:pass", controller.getTaskList)
 
 module.exports = router;
