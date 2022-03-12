@@ -1,15 +1,9 @@
 const express = require('express');
 
-const emojis = require('./emojis');
+const controller = require('./controller')
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    message: 'API - 👋🌎🌍🌏'
-  });
-});
-
-router.use('/emojis', emojis);
+router.get("/user/:email/:pass", controller.getUserPass);
 
 module.exports = router;
