@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 const secret = "super_secret_pass";
 
-exports.getUserPass = (req, res) => {
+exports.getUser = (req, res) => {
     // Validate request
     if ((req.params.pass != secret) || (!req.params.email)) {
         console.log(req.params);
@@ -47,7 +47,7 @@ exports.createUser = (req, res) => {
         if (err) {
             res.status(500).send({ message: "Internal error" });
         }
-        con.query(`INSERT INTO user (id, first_name, last_name, email, password) values (default, "${req.bodyuserfirst_name}", "${req.body.user.last_name}", "${req.body.user.email}", "${req.body.user.pass}")`, (err,result,fields) => {
+        con.query(`INSERT INTO user (id, first_name, last_name, email, password) values (default, "${req.body.user.first_name}", "${req.body.user.last_name}", "${req.body.user.email}", "${req.body.user.pass}")`, (err,result,fields) => {
             if (err) {
                 res.status(500).send({
                     message: "Internal error"
