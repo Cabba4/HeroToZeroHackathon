@@ -1,24 +1,50 @@
 package com.example.myroute;
 
 public class listObject {
-    private int id;
+    private int task_id;
     private String name;
     private String description;
     private int weight;
+    private int completion;
+    private int goal;
+    private String type;
 
+    public int getCompletion() {
+        return completion;
+    }
+
+    public void setCompletion(int completion) {
+        this.completion = completion;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public listObject(int pId, String pName, String pDescription, int pWeight ){
-        this.id = pId;
+        this.task_id = pId;
         this.name = pName;
         this.description = pDescription;
         this.weight = pWeight;
     }
-    public int getId() {
-        return id;
+    public int getTask_id() {
+        return task_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTask_id(int task_id) {
+        this.task_id = task_id;
     }
 
     public String getName() {
