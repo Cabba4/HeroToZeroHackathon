@@ -6,13 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    String email="";
+    String userId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        email = getIntent().getExtras().getString("Email");
+        userId = getIntent().getExtras().getString("Id");
+        //Toast.makeText(this,email+userId,Toast.LENGTH_LONG).show();
     }
 
     public void showCommunityStats(View view) {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showLessons(View view) {
         Intent intent = new Intent(this,lessonWindow.class);
+        intent.putExtra("Id",userId);
         // Maybe send some data here
         startActivity(intent);
     }

@@ -2,6 +2,7 @@ package com.example.myroute;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,13 +30,23 @@ public class lessonWindow extends AppCompatActivity {
     private int weight;
 
     private RequestQueue queue;
-    String listDatafromBackend = "https://mydatacomesfromhere.com";
+    String listDatafromBackend = "https://21wsp4pw.course.tamk.cloud/api/v2/tasks/";
+    String userId = getIntent().getStringExtra("Id");
+    String superPass = "/super_secret_pass";
 
     public void getList(){
         StringRequest stringRequest = new StringRequest(Request.Method.GET, listDatafromBackend,
                 response -> {
+                    try {
+                        JSONObject tasks = new JSONObject(response);
+
+                        Toast.makeText(this,response,Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     //Toast.makeText(this,response,Toast.LENGTH_LONG).show();
-                    parseJsonAndUpdateUI(response);  	//<= Sub function which parses the json object
+                    //parseJsonAndUpdateUI(response);  	//<= Sub function which parses the json object
                 },
                 volleyError -> {
                     Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
@@ -44,21 +55,21 @@ public class lessonWindow extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    private void parseJsonAndUpdateUI(String response) {
+   /* private void parseJsonAndUpdateUI(String response) {
         try {
             JSONObject list = new JSONObject(response);
             //id = list.getJSONArray();
             //name = list.getJSONArray();
             //description = list.getJSONArray();
             //weight = list.getJSONArray();
-            taskList.add(new listObject(id,name,description,weight));
+            //taskList.add(new listObject(id,name,description,weight));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
-
+*/
     String tutorials[]
             = { "Clean Kitchen", "Data Structures",
             "Languages", "Interview Corner",
@@ -70,9 +81,10 @@ public class lessonWindow extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_window);
+        getList();
         queue = Volley.newRequestQueue(this);
     }
-
+/*
     public void showChange(View view) {
         l = findViewById(R.id.listView);
         ArrayAdapter<listObject> arr;
@@ -81,5 +93,5 @@ public class lessonWindow extends AppCompatActivity {
                 taskList);
         l.setAdapter(arr);
     }
-
+*/
 }
