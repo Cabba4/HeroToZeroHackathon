@@ -18,6 +18,7 @@ public class loginPage extends AppCompatActivity {
     public void loginNow(View view) {
         EditText username = (EditText)findViewById(R.id.editTextTextPersonName);
         EditText password = (EditText)findViewById(R.id.editTextTextPassword);
+        
 
     }
 
