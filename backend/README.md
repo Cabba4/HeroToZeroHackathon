@@ -2,7 +2,7 @@
 
 ## API
 
-### GET https://21wsp4pw.course.tamk.cloud/api/v1/user/:email/:pass
+### GET https://21wsp4pw.course.tamk.cloud/api/v2/user/:email/:pass
 ```
 {
   "id": 1,
@@ -13,7 +13,7 @@
 }
 ```
 
-### POST https://21wsp4pw.course.tamk.cloud/api/v1/user/:pass
+### POST https://21wsp4pw.course.tamk.cloud/api/v2/user/:pass
 ```
 {
   "user":{
@@ -25,7 +25,7 @@
 }
 ```
 
-### GET https://21wsp4pw.course.tamk.cloud/api/v1/tasks/:user_id/:pass
+### GET https://21wsp4pw.course.tamk.cloud/api/v2/tasks/:user_id/:pass
 ```
 [
   {
