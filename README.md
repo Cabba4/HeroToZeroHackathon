@@ -36,9 +36,15 @@ Password - password123
 
 ![Login Page](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/login.jpg "Title")
 
+Once logged in the main page shows the users green rate and community green rate
+
 ![Home Page](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/home.jpg "Title")
 
+All task list can be accesssed from the icon on the right
+
 ![All Tasks](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/allTask.jpg "Title")
+
+Here we have a new task for user John, this is received by making an API call to backend
 
 ![My Task](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/myTask.jpg "Title")
 
