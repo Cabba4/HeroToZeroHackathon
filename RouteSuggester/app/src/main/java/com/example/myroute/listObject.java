@@ -1,27 +1,27 @@
 package com.example.myroute;
 
 public class listObject {
-    private int task_id;
+    private Double task_id;
     private String name;
     private String description;
-    private int weight;
-    private int completion;
-    private int goal;
+    private Double weight;
+    private Double completion;
+    private Double goal;
     private String type;
 
-    public int getCompletion() {
+    public Double getCompletion() {
         return completion;
     }
 
-    public void setCompletion(int completion) {
+    public void setCompletion(Double completion) {
         this.completion = completion;
     }
 
-    public int getGoal() {
+    public Double getGoal() {
         return goal;
     }
 
-    public void setGoal(int goal) {
+    public void setGoal(Double goal) {
         this.goal = goal;
     }
 
@@ -33,17 +33,27 @@ public class listObject {
         this.type = type;
     }
 
-    public listObject(int pId, String pName, String pDescription, int pWeight ){
+    public listObject(Double pId, String pName, String pDescription, Double pWeight ){
         this.task_id = pId;
         this.name = pName;
         this.description = pDescription;
         this.weight = pWeight;
     }
-    public int getTask_id() {
+
+    public listObject(){
+        this.task_id = 0.0;
+        this.name = "";
+        this.description = "";
+        this.weight = 0.0;
+        this.completion = 0.0;
+        this.goal = 0.0;
+        this.type = "";
+    }
+    public Double getTask_id() {
         return task_id;
     }
 
-    public void setTask_id(int task_id) {
+    public void setTask_id(Double task_id) {
         this.task_id = task_id;
     }
 
@@ -63,11 +73,11 @@ public class listObject {
         this.description = description;
     }
 
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 }

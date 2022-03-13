@@ -12,12 +12,14 @@ public class MainActivity extends AppCompatActivity {
 
     String email="";
     String userId="";
+    String copyId="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         email = getIntent().getExtras().getString("Email");
         userId = getIntent().getExtras().getString("Id");
+        copyId = userId;
         //Toast.makeText(this,email+userId,Toast.LENGTH_LONG).show();
     }
 
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         //Intent intent = new Intent(this,communityStats.class);
         TextView mainScreenStats = findViewById(R.id.textView2);
         Integer percentageCommunity = getPercentage();
-        mainScreenStats.setText("Community GreenRate: "+percentageCommunity.toString());
+        mainScreenStats.setText("Community : "+percentageCommunity.toString());
     }
 
     private int getPercentage() {
@@ -41,13 +43,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showLessons(View view) {
-        Intent intent = new Intent(this,lessonWindow.class);
-        intent.putExtra("Id",userId);
+        Intent intent = new Intent(this,registerPerson.class);
+        //intent.putExtra("Id",userId);
         // Maybe send some data here
         startActivity(intent);
     }
 
     public void showLogin(View view) {
-        Intent intent = new Intent(this,loginPage.class);
+        Intent intent = new Intent(this,lessonWindow.class);
+        intent.putExtra("ID",copyId);
+        startActivity(intent);
     }
 }

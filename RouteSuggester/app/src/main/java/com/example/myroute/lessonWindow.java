@@ -21,68 +21,98 @@ import org.json.JSONObject;
 import java.sql.Array;
 import java.util.ArrayList;
 
+
 public class lessonWindow extends AppCompatActivity {
+
     ListView l;
-    listObject taskStore;
-    ArrayList<listObject> taskList = new ArrayList<>();
+    public listObject taskStore = new listObject(0.0,"","",0.0);
+    static ArrayList<listObject> taskList = new ArrayList<>();
     private RequestQueue queue;
     String listDatafromBackend = "https://21wsp4pw.course.tamk.cloud/api/v2/tasks/";
-    String userId = getIntent().getStringExtra("Id");
+    String idText;
     String superPass = "/super_secret_pass";
 
+    //ListView l;
+    String tutorials[]
+            = { "Attend Workshop", "Save on Gas",
+            "Water Office plants", "Clear Emails",
+            "Switch off electrical appliances", "Use public transport",
+            "Reduce plastic use", "Eat less meat",
+            "Reduce printer use" };
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_window);
-        //getList();
-        //showChange();
-        //Toast.makeText(this,listDatafromBackend+userId+superPass,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,userId.toString(),Toast.LENGTH_LONG).show();
+        l = findViewById(R.id.listView);
+        ArrayAdapter<String> arr;
+        arr
+                = new ArrayAdapter<String>(
+                this,
+                R.layout.support_simple_spinner_dropdown_item,
+                tutorials);
+        Intent userId = getIntent();
+        idText = userId.getStringExtra("ID");
+        l.setAdapter(arr);
         queue = Volley.newRequestQueue(this);
-    }
-    private int counter =0;
-    public void getList(){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, listDatafromBackend,
-                response -> {
-                    try {
-                        JSONArray tasks = new JSONArray(response);
-                        while(tasks.getJSONObject(counter).has("name"))
-                        {
-                            taskStore.setTask_id(tasks.getJSONObject(counter).getInt("task_id"));
-                            taskStore.setName(tasks.getJSONObject(counter).getString("name"));
-                            taskStore.setCompletion(tasks.getJSONObject(counter).getInt("completion"));
-                            taskStore.setDescription(tasks.getJSONObject(counter).getString("description"));
-                            taskStore.setGoal(tasks.getJSONObject(counter).getInt("goal"));
-                            taskStore.setType(tasks.getJSONObject(counter).getString("type"));
-                            taskStore.setWeight(tasks.getJSONObject(counter).getInt("weight"));
-                            taskList.add(taskStore);
-                            counter++;
-                        }
-                        //task_id = tasks.getJSONOb
-                        Toast.makeText(this,taskStore.toString(),Toast.LENGTH_LONG).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    //Toast.makeText(this,response,Toast.LENGTH_LONG).show();
-                    //parseJsonAndUpdateUI(response);  	//<= Sub function which parses the json object
-                },
-                volleyError -> {
-                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
-                });
-        // Sending request by adding it to queue
-        queue.add(stringRequest);
     }
 
     public void showChange(View view) {
-       getList();
+        getList();
+        //Toast.makeText(this,taskList.toString(),Toast.LENGTH_LONG).show();
+    }
+
+
+    private int counter =0;
+    private String tas;
+    public void getList() {
+        listDatafromBackend = listDatafromBackend + idText + superPass;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,listDatafromBackend,
+                response ->{
+                    try {
+                        JSONArray tasks = new JSONArray(response);
+                        //while(tasks.getJSONObject(0).has("name"))
+                        {
+                            taskStore.setName(tasks.getJSONObject(0).getString("name"));
+                            taskStore.setCompletion(tasks.getJSONObject(0).getDouble("completion"));
+                            taskStore.setDescription(tasks.getJSONObject(0).getString("description"));
+                            taskStore.setGoal(tasks.getJSONObject(0).getDouble("goal"));
+                            taskStore.setType(tasks.getJSONObject(0).getString("type"));
+                            taskStore.setWeight(tasks.getJSONObject(0).getDouble("weight"));
+                            taskList.add(taskStore);
+                            myList(taskList);
+                            //counter++;
+                            //taskStore = new listObject();
+                            //JSONObject taskkk = tasks.getJSONObject(0);
+                            //tas = taskkk.getString("name");
+                            //taskStore= new listObject(0.0,tas,"work",0.0);
+                            //Toast.makeText(this,taskList.toString(),Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                },
+                volleyError -> {
+                    //Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
+                });
+        //Toast.makeText(this,taskList.toString(),Toast.LENGTH_LONG).show();
+        queue.add(stringRequest);
+    }
+
+    private void myList(ArrayList<listObject> taskList) {
+        //Toast.makeText(this,taskList.toString(),Toast.LENGTH_LONG).show();
+        String dump[] = {taskList.get(0).getName() };
         l = findViewById(R.id.listView);
-        ArrayAdapter<listObject> arr;
+        ArrayAdapter<String> arr;
         arr
-                = new ArrayAdapter<listObject>(
+                = new ArrayAdapter<String>(
                 this,
                 R.layout.support_simple_spinner_dropdown_item,
-                taskList);
+                dump);
+        Intent userId = getIntent();
+        idText = userId.getStringExtra("ID");
         l.setAdapter(arr);
-        //getList();
     }
 }
