@@ -1,4 +1,4 @@
-package com.example.myroute;
+package com.example.GreenAid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +13,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import GreenAid.R;
 
 public class loginPage extends AppCompatActivity {
 

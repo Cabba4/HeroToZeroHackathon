@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyRoute</string>
+    <string name="app_name">GreenAid</string>
     <string name="title_activity_community_stats">communityStats</string>
     <!-- Strings used for fragments for navigation -->
 

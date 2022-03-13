@@ -14,8 +14,8 @@ router.put("/task/:task_id/:pass", controller.updateTask);
 
 // Employer rights required
 
-router.get("/report/:user_id/:pass", controller.getIndividualReport);
+router.post("/report/:user_id/:pass", controller.getIndividualReport);
 
-router.get("/report/:pass", controller.getReport);
+router.post("/report/:pass", controller.getReport);
 
 module.exports = router;

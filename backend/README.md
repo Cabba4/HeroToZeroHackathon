@@ -57,6 +57,22 @@
 }
 ```
 
+### POST https://21wsp4pw.course.tamk.cloud/api/v2/report/:user_id/:pass
+```
+{
+   "user_id":21,
+   "pass":"another_pass"
+}
+```
+
+### POST https://21wsp4pw.course.tamk.cloud/api/v2/report/:pass
+```
+{
+   "user_id":21,
+   "pass":"another_pass"
+}
+```
+
 
 ## Setup
 
