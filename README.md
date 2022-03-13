@@ -34,11 +34,11 @@ Run YourApp by Android Studio Menu > Run > Run YourApp.
 Email - john.doe@example.com
 Password - password123
 
-![Login Page](./screenShots/login.jpeg "Title")
+![Login Page(https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/login.jpg "Title")
 
-![Home Page](./screenShots/home.jpeg "Title")
+![Home Page](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/home.jpg "Title")
 
-![All Tasks](./screenShots/allTask.jpeg "Title")
+![All Tasks(https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/allTask.jpg "Title")
 
-![My Task](./screenShots/myTask.jpeg "Title")
+![My Task](https://github.com/Cabba4/HeroToZeroHackathon/blob/main/screenShots/myTask.jpg "Title")
 
