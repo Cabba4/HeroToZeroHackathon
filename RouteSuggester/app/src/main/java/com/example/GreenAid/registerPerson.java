@@ -1,8 +1,10 @@
-package com.example.myroute;
+package com.example.GreenAid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import GreenAid.R;
 
 public class registerPerson extends AppCompatActivity {
 

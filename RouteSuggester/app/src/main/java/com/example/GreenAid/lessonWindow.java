@@ -1,4 +1,4 @@
-package com.example.myroute;
+package com.example.GreenAid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,10 +15,10 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.sql.Array;
 import java.util.ArrayList;
+
+import GreenAid.R;
 
 
 public class lessonWindow extends AppCompatActivity {

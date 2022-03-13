@@ -1,4 +1,4 @@
-package com.example.myroute;
+package com.example.GreenAid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import GreenAid.R;
 
 public class MainActivity extends AppCompatActivity {
 

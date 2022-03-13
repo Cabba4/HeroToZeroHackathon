@@ -1,4 +1,4 @@
-package com.example.myroute;
+package com.example.GreenAid;
 
 import org.junit.Test;
 

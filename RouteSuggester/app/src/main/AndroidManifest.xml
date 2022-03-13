@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myroute">
+    package="GreenAid">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -11,16 +11,16 @@
         android:theme="@style/Theme.MyRoute"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".registerPerson"
+            android:name="com.example.GreenAid.registerPerson"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.GreenAid.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".lessonWindow"
+            android:name="com.example.GreenAid.lessonWindow"
             android:exported="false" />
         <activity
-            android:name=".loginPage"
+            android:name="com.example.GreenAid.loginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

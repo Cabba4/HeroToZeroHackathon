@@ -7,4 +7,38 @@ Team Members -
 * Dilnaz 
 * Safiul Alam
 * Sviatoslav Vasev
-* 
+* Petrus Eskelinen
+* Jerrell Thomas Asbill
+* My Quynh Nguyen
+
+Team Pitch  
+
+[Figma URL](https://www.figma.com/file/L45XwYK9FHJNYhdmQmoas9/Greenrate-tracker?node-id=0%3A1)
+
+## Android Application setup 
+
+## Installation
+
+Download:
+
+    $ git clone https://github.com/Cabba4/HeroToZeroHackathon.git 
+
+Import Project by Android Studio Menu > File > Import Project...
+
+Click "Sync Project with Gradle Files" and "Rebuild Project" at Android Studio Menu.
+
+Run YourApp by Android Studio Menu > Run > Run YourApp.
+
+## Test Credentials 
+
+Email - john.doe@example.com
+Password - password123
+
+![Login Page](./screenShots/login.jpeg "Title")
+
+![Home Page](./screenShots/home.jpeg "Title")
+
+![All Tasks](./screenShots/allTask.jpeg "Title")
+
+![My Task](./screenShots/myTask.jpeg "Title")
+
